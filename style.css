@@ -127,6 +127,10 @@ input {
   text-decoration: none;
 }
 
+.credits {
+  text-align: center;
+}
+
 @media screen and ( max-width: 1024px ) {
 img.girl { width: 190px; }
 }
