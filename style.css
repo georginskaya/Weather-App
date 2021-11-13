@@ -1,11 +1,12 @@
 h1 {
-  color: black;
+  color: #A6A6A6;
   padding-top: 3px;
   padding-left: 40%;
+  font-family: 'Arvo', serif;
 }
 
 body {
-  font-family: "PT Mono", monospace;
+  font-family: 'Poppins', sans-serif;
 }
 
 input[type="text"] {
@@ -37,6 +38,7 @@ h4 {
   padding-left: 32%;
   color:#7C7C7C;
   text-transform: capitalize;
+  font-family: 'Poppins', sans-serif;
 }
 .col-3 {
   text-align: right;
@@ -66,6 +68,7 @@ h4 {
   background: rgb(118, 95, 155);
   max-width: 100% !important;
   padding-bottom: 7%;
+  font-family: 'Poppins', sans-serif;
 }
 
 .header {
@@ -76,6 +79,8 @@ h4 {
 
 .date {
   padding-left: 40%;
+  color: #626262;
+font-family: 'Poppins', sans-serif;
 }
 
 input {
@@ -98,7 +103,7 @@ input {
 
 .current {
   display: inline-flex;
-
+font-family: 'Poppins', sans-serif;
   margin-top: 10px;
   justify-content: center;
   width: 80%;
@@ -123,6 +128,7 @@ input {
 #temperature {
   font-size: 50px;
   margin-left: 10px;
+  font-family: 'Poppins', sans-serif;
 }
 
 #fahrenheit-link,
@@ -132,11 +138,13 @@ input {
 
 .credits {
   text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 .forecast .units{
   position: relative;
   top: -25px;
+  font-family: 'Poppins', sans-serif;
 
 }
 
