@@ -35,10 +35,13 @@ h4 {
 .forecast {
   display: block;
   padding-left: 32%;
+  color:#7C7C7C;
+  text-transform: capitalize;
 }
 .col-3 {
   text-align: right;
   font-size: 22px;
+  text-transform: capitalize;
 }
 .col {
   text-align: center;
@@ -54,7 +57,7 @@ h4 {
   padding-left: 15%;
 }
 
-.girl {
+.keyvisual {
   height: 300px;
   padding-top: 50px;
 }
@@ -131,8 +134,14 @@ input {
   text-align: center;
 }
 
+.forecast .units{
+  position: relative;
+  top: -25px;
+
+}
+
 @media screen and ( max-width: 1024px ) {
-img.girl { width: 190px; }
+img.keyvisual { width: 190px; }
 }
 
 @media screen and ( max-width: 1024px ) {

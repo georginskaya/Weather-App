@@ -63,8 +63,7 @@ Find how to use version control on vs code-->
                     <!-- STOLEN piece of code -->
                     <div class="placeholder1">
                         <div class="clearfix">
-                            <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt="Cloudy icon"
-                                class="weather-icon float-left" />
+                            <img src="#" alt="weather icon" id="weather-icon" class="weather-icon float-left" />
                             <div class="float-left">
                                 <span class="temperature" id="temperature">19</span><span class="units">
                                     <a href="#" id="celsius-link">°C</a> |
@@ -77,7 +76,7 @@ Find how to use version control on vs code-->
                 </div>
             </div>
             <div class="col-7">
-                <img class="girl" src="src/undraw_Powerful_re_frhr.svg" />
+                <img class="keyvisual" src="src/undraw_Powerful_re_frhr.svg" />
             </div>
         </div>
     </div>
@@ -155,7 +154,13 @@ Find how to use version control on vs code-->
 
             let date = mydate.getDate();
             let hour = mydate.getHours();
+            if (hour < 10) {
+                hour = `0${hour}`
+            }
             let minute = mydate.getMinutes();
+            if (minute < 10) {
+                minute = `0${minute}`
+            }
             let year = mydate.getFullYear();
 
             let formattedDate = document.querySelector(".date");
@@ -163,6 +168,12 @@ Find how to use version control on vs code-->
 
             return formattedDate;
         }
+
+
+
+
+
+
 
         //   here you are starting the function by sending the "now" as a "my date" parameter
         formatDate(now);
@@ -200,12 +211,40 @@ Find how to use version control on vs code-->
 
         // API
         function displayWeather(response) {
+            console.log(response.data);
             document.querySelector("#city").innerHTML = response.data.name;
             document.querySelector("#temperature").innerHTML = Math.round(
                 response.data.main.temp
             );
             document.querySelector("#temperature-description").innerHTML =
                 response.data.weather[0].description;
+
+            let iconElement = document.querySelector("#weather-icon");
+            iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+            iconElement.setAttribute("alt", response.data.weather[0].description);
+            // Changin  keyvisual 
+
+            if (response.data.main.temp < -1) {
+                let keyVisual = document.querySelector(".keyvisual");
+                keyVisual.setAttribute("src", "src/undraw_Powerful_re_frhr.svg");
+            }
+
+            if (response.data.main.temp > 1) {
+                let keyVisual = document.querySelector(".keyvisual");
+                keyVisual.setAttribute("src", "src/undraw_My_universe_re_txot.svg");
+            }
+
+            if (response.data.main.temp > 9) {
+                let keyVisual = document.querySelector(".keyvisual");
+                keyVisual.setAttribute("src", "src/undraw_Hiking_re_k0bc.svg");
+            }
+
+            if (response.data.main.temp > 16) {
+                let keyVisual = document.querySelector(".keyvisual");
+                keyVisual.setAttribute("src", "src/undraw_Floating_re_xtcj.svg");
+            }
+
+
         }
 
         function searchCity(city) {
