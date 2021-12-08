@@ -128,14 +128,7 @@ Find how to use version control on vs code-->
     <div class="credits"><a href="https://github.com/georginskaya/weather" target="_blank">Open-source code
             by</a> Alyona</div>
     <script>
-        //  VERIABLES FOR UNITS
-        let temperature = document.querySelector("#temperature");
-        let celsius = document.querySelector("#celsius-link");
-        celsius.addEventListener("click", changetoCelsius);
 
-        let fahrenheit = document.querySelector("#fahrenheit-link");
-        fahrenheit.addEventListener("click", changetoFahrenheit);
-        //  VERIABLES FOR UNITS END
 
         let now = new Date();
 
@@ -206,16 +199,7 @@ Find how to use version control on vs code-->
             }
         }
 
-        //  FUNCTIONS FOR UNITS
-        function changetoCelsius(event) {
-            event.preventDefault;
-            temperature.innerHTML = "19";
-        }
 
-        function changetoFahrenheit(event) {
-            event.preventDefault;
-            temperature.innerHTML = "66";
-        }
 
         // API
         function displayWeather(response) {
@@ -227,6 +211,11 @@ Find how to use version control on vs code-->
             document.querySelector("#temperature-description").innerHTML =
                 response.data.weather[0].description;
 
+
+
+
+
+            // Getting weather icon
             let iconElement = document.querySelector("#weather-icon");
             iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
             iconElement.setAttribute("alt", response.data.weather[0].description);
@@ -261,6 +250,32 @@ Find how to use version control on vs code-->
             let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
             axios.get(apiUrl).then(displayWeather);
         }
+
+
+        // UNIT Conversion 
+        //  VERIABLES FOR UNITS
+        let temperature = document.querySelector("#temperature");
+        let farenheitTemp = (14 * 9 / 5) + 32;
+
+        let celsius = document.querySelector("#celsius-link");
+        celsius.addEventListener("click", changetoCelsius);
+
+        let fahrenheit = document.querySelector("#fahrenheit-link");
+        fahrenheit.addEventListener("click", changetoFahrenheit);
+        //  VERIABLES FOR UNITS END
+
+
+        //  FUNCTIONS FOR UNITS
+        function changetoCelsius(event) {
+            event.preventDefault;
+            temperature.innerHTML = "19";
+        }
+
+        function changetoFahrenheit(event) {
+            event.preventDefault;
+            temperature.innerHTML = "66";
+        }
+
 
         //  getting current location
 
