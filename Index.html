@@ -50,7 +50,7 @@ Find how to use version control on vs code-->
 
                 </div>
                 <div class="col-2">
-                    <input type="submit" value="search" class="weatherbutton " />
+                    <input type="submit" value="earch" class="weatherbutton " />
                     <button type="button" class="current" id="current-location">Here</button>
                 </div>
                 <div class="col-2">
@@ -70,12 +70,12 @@ Find how to use version control on vs code-->
                     <div id="temperature-description">Description</div>
                     <!-- STOLEN piece of code -->
                     <div class="placeholder1">
-                        <div class="clearfix">
+                        <div class="clearfix weather-temperature">
                             <img src="#" alt="weather icon" id="weather-icon" class="weather-icon float-left" />
                             <div class="float-left">
                                 <span class="temperature" id="temperature">19</span><span class="units">
-                                    <a href="#" id="celsius-link">°C</a> |
-                                    <a href="#" id="fahrenheit-link">°F</a>
+                                    <a href="#" id="celsius-link" class="active">°C</a> |
+                                    <a href="#" id="fahrenheit-link" class="active">°F</a>
                                 </span>
                             </div>
                         </div>
@@ -170,12 +170,6 @@ Find how to use version control on vs code-->
             return formattedDate;
         }
 
-
-
-
-
-
-
         //   here you are starting the function by sending the "now" as a "my date" parameter
         formatDate(now);
 
@@ -203,6 +197,8 @@ Find how to use version control on vs code-->
 
         // API
         function displayWeather(response) {
+            celsiusTemperature = response.data.main.temp;
+
 
             document.querySelector("#city").innerHTML = response.data.name;
             document.querySelector("#temperature").innerHTML = Math.round(
@@ -210,9 +206,6 @@ Find how to use version control on vs code-->
             );
             document.querySelector("#temperature-description").innerHTML =
                 response.data.weather[0].description;
-
-
-
 
 
             // Getting weather icon
@@ -255,7 +248,7 @@ Find how to use version control on vs code-->
         // UNIT Conversion 
         //  VERIABLES FOR UNITS
         let temperature = document.querySelector("#temperature");
-        let farenheitTemp = (14 * 9 / 5) + 32;
+
 
         let celsius = document.querySelector("#celsius-link");
         celsius.addEventListener("click", changetoCelsius);
@@ -268,12 +261,21 @@ Find how to use version control on vs code-->
         //  FUNCTIONS FOR UNITS
         function changetoCelsius(event) {
             event.preventDefault;
-            temperature.innerHTML = "19";
+            celsius.classList.add("active");
+            fahrenheit.classList.remove("active");
+
+            temperature.innerHTML = Math.round(celsiusTemperature);
         }
 
         function changetoFahrenheit(event) {
             event.preventDefault;
-            temperature.innerHTML = "66";
+
+            // remove the "active" class from the celsius link
+            celsius.classList.remove("active");
+            fahrenheit.classList.add("active");
+            let farenheitTemp = (celsiusTemperature * 9 / 5) + 32;
+            let temperature = document.querySelector("#temperature");
+            temperature.innerHTML = Math.round(farenheitTemp);
         }
 
 
@@ -297,6 +299,8 @@ Find how to use version control on vs code-->
             let city = document.querySelector("#search-input").value;
             searchCity(city);
         }
+
+        let celsiusTemperature = null;
 
         let searchForm = document.querySelector("#search");
         searchForm.addEventListener("submit", handleSubmit);

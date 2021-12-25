@@ -1,12 +1,12 @@
 h1 {
-  color: #A6A6A6;
+  color: #a6a6a6;
   padding-top: 3px;
   padding-left: 40%;
-  font-family: 'Arvo', serif;
+  font-family: "Arvo", serif;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 input[type="text"] {
@@ -36,9 +36,9 @@ h4 {
 .forecast {
   display: block;
   padding-left: 32%;
-  color:#7C7C7C;
+  color: #7c7c7c;
   text-transform: capitalize;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .col-3 {
   text-align: right;
@@ -68,7 +68,7 @@ h4 {
   background: rgb(118, 95, 155);
   max-width: 100% !important;
   padding-bottom: 7%;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .header {
@@ -80,7 +80,7 @@ h4 {
 .date {
   padding-left: 40%;
   color: #626262;
-font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 input {
@@ -91,28 +91,30 @@ input {
 
   margin-top: 10px;
   justify-content: center;
-
+  width: 55% !important;
   flex-wrap: wrap;
   padding: 5px !important;
-  border: 2px solid #f29200;
+  border: 3px solid #ffb52b;
   background-color: white;
-  border-radius: 20px;
-  color: #f29200;
+  border-radius: 8px;
+  color: #ffb52b;
   font-weight: 600;
+
+  font-family: "Arvo", serif;
 }
 
 .current {
   display: inline-flex;
-font-family: 'Poppins', sans-serif;
+  font-family: "Arvo", serif;
   margin-top: 10px;
   justify-content: center;
-  width: 80%;
+  width: 55%;
   flex-wrap: wrap;
   padding: 5px !important;
-  border: 2px solid lightgreen;
+  border: 3px solid #a9a9a9;
   background-color: white;
-  border-radius: 20px;
-  color: lightgreen;
+  border-radius: 8px;
+  color: #a9a9a9;
   font-weight: 600;
 }
 
@@ -128,7 +130,7 @@ font-family: 'Poppins', sans-serif;
 #temperature {
   font-size: 50px;
   margin-left: 10px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 #fahrenheit-link,
@@ -136,23 +138,29 @@ font-family: 'Poppins', sans-serif;
   text-decoration: none;
 }
 
+.weather-temperature .active {
+  color: #868686;
+}
+
 .credits {
   text-align: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-.forecast .units{
+.forecast .units {
   position: relative;
   top: -25px;
-  font-family: 'Poppins', sans-serif;
-
+  font-family: "Poppins", sans-serif;
 }
 
-@media screen and ( max-width: 1024px ) {
-img.keyvisual { width: 190px; }
+@media screen and (max-width: 1024px) {
+  img.keyvisual {
+    width: 190px;
+  }
 }
 
-@media screen and ( max-width: 1024px ) {
-.heading { font-size: 19px; }
+@media screen and (max-width: 1024px) {
+  .heading {
+    font-size: 19px;
+  }
 }
-
