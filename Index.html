@@ -50,7 +50,7 @@ Find how to use version control on vs code-->
 
                 </div>
                 <div class="col-2">
-                    <input type="submit" value="earch" class="weatherbutton " />
+                    <input type="submit" value="Search" class="weatherbutton " />
                     <button type="button" class="current" id="current-location">Here</button>
                 </div>
                 <div class="col-2">
@@ -90,43 +90,12 @@ Find how to use version control on vs code-->
     </div>
 
     <div class="container low-container">
-        <div class="row weekly">
-            <div class="col">
-                Mon
-                <div class="smallplaceholder"></div>
-
-                <h4>14°C</h4>
-            </div>
-            <div class="col">
-                Tue
-                <div class="smallplaceholder"></div>
-                <h4>14°C</h4>
-            </div>
-            <div class="col">
-                Wed
-                <div class="smallplaceholder"></div>
-                <h4>14°C</h4>
-            </div>
-            <div class="col">
-                Thu
-                <div class="smallplaceholder"></div>
-                <h4>14°C</h4>
-            </div>
-            <div class="col">
-                Fri
-                <div class="smallplaceholder"></div>
-                <h4>14°C</h4>
-            </div>
-            <div class="col">
-                Sat
-                <div class="smallplaceholder"></div>
-                <h4>14°C</h4>
-            </div>
-        </div>
+        <div class="weekly" id="weeklyForecast"></div>
 
     </div>
     <div class="credits"><a href="https://github.com/georginskaya/weather" target="_blank">Open-source code
             by</a> Alyona</div>
+
     <script>
 
 
@@ -173,6 +142,12 @@ Find how to use version control on vs code-->
         //   here you are starting the function by sending the "now" as a "my date" parameter
         formatDate(now);
 
+
+
+
+
+
+
         // SEARCH FUNCTION
 
         //  targetting search button
@@ -195,8 +170,78 @@ Find how to use version control on vs code-->
 
 
 
+
+        // Format days for forecast 
+        // timestamp is sent here from the "forecastDay.dt" - see below - then the function
+        // takes this timestamp and does the calculation, dfines the current date and goes through an array
+
+
+        function formatForecastDays(timestamp) {
+            let date = new Date(timestamp * 1000);
+            let day = date.getDay();
+            let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            return days[day];
+        }
+
+
+
         // API
+        // displaying weekly forecast here - manipulate html with js 
+        function displayForecast(response) {
+            let forecastDays = response.data.daily;
+            let forecastElement = document.querySelector("#weeklyForecast");
+
+
+            let forecastHTML = `<div class="row">`;
+            // Looping through days from daily forecast
+            forecastDays.forEach(function (forecastDay, index) {
+
+                // let FahrenheitTempForecastMax = forecastDay.temp.max;
+                // let FahrenheitTempForecastMin = forecastDay.temp.min;
+                // let CelsiusTempForecastMax = (FahrenheitTempForecastMax - 32) * 5 / 9;
+                // let CelsiusTempForecastMin = (FahrenheitTempForecastMin - 32) * 5 / 9;
+                // Start HERE / at the moment the api temp response is a big number - how change it to normal? previous api was ok in that matter
+
+                if (index < 6) {
+
+                    forecastHTML = forecastHTML + `
+                
+                <div class="col-2">
+                    <div class="forecast-date">${formatForecastDays(forecastDay.dt)}</div>
+                  
+                    <img src = "http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png");width="42" />
+                    <div class="forecast-temperatures">
+                        <span class="forecast.temperature-max"> ${Math.round(forecastDay.temp.max)} </span>
+                         <span class="forecast.temperature-min"> ${Math.round(forecastDay.temp.min)}</span>
+                        </div>
+                         </div>`;
+                }
+            });
+            forecastHTML = forecastHTML + `</div>`;
+
+            forecastElement.innerHTML = forecastHTML;
+
+
+        }
+
+        // Getting weekly forecast - making an api call
+        function getForecast(coordinates) {
+
+            let apiKey = "3980a7c8f2a782241a093131b099f993";
+            apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&unit=metric`;
+
+
+            axios.get(apiUrl).then(displayForecast);
+
+            console.log(apiUrl);
+        }
+
+
+
+
+
         function displayWeather(response) {
+
             celsiusTemperature = response.data.main.temp;
 
 
@@ -234,13 +279,15 @@ Find how to use version control on vs code-->
                 keyVisual.setAttribute("src", "src/undraw_Floating_re_xtcj.svg");
             }
 
-
+            getForecast(response.data.coord)
         }
 
         function searchCity(city) {
+
             let apiKey = "3980a7c8f2a782241a093131b099f993";
 
             let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
             axios.get(apiUrl).then(displayWeather);
         }
 
@@ -309,6 +356,7 @@ Find how to use version control on vs code-->
         currentLocation.addEventListener("click", getCurrent);
 
         searchCity("Suprunivka");
+
 
 
 

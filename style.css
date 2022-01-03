@@ -1,7 +1,7 @@
 h1 {
   color: #a6a6a6;
   padding-top: 3px;
-  padding-left: 40%;
+  padding-left: 39%;
   font-family: "Arvo", serif;
 }
 
@@ -35,7 +35,7 @@ h4 {
 
 .forecast {
   display: block;
-  padding-left: 32%;
+  padding-left: 33%;
   color: #7c7c7c;
   text-transform: capitalize;
   font-family: "Poppins", sans-serif;
@@ -65,7 +65,7 @@ h4 {
 }
 
 .low-container {
-  background: rgb(118, 95, 155);
+  background: #9f88bf;
   max-width: 100% !important;
   padding-bottom: 7%;
   font-family: "Poppins", sans-serif;
