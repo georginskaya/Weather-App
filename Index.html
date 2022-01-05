@@ -35,29 +35,31 @@ Find how to use version control on vs code-->
 
 
     <div class="container header">
-        <form id="search">
-            <div class="row">
-                <div class="col-5">
-                    <h1 class="heading">Wheather App</h1>
-                    <div class="date">Date</div>
-                </div>
+        <div class="headingAll">
+            <form id="search">
+                <div class="row">
+                    <div class="col-5">
+                        <h1 class="heading">Wheather App</h1>
+                        <div class="date">Date</div>
+                    </div>
 
-                <div class="col-3">
+                    <div class="col-3">
 
-                    <input type="text" placeholder="Search for a city" autocomplete="off" autofocus="on"
-                        id="search-input" />
-                    <!-- give an id to a value inside the input tto have access to it  -->
+                        <input type="text" placeholder="Search for a city" autocomplete="off" autofocus="on"
+                            id="search-input" />
+                        <!-- give an id to a value inside the input tto have access to it  -->
 
-                </div>
-                <div class="col-2">
-                    <input type="submit" value="Search" class="weatherbutton " />
-                    <button type="button" class="current" id="current-location">Here</button>
-                </div>
-                <div class="col-2">
+                    </div>
+                    <div class="col-2">
+                        <input type="submit" value="Search" class="weatherbutton " />
+                        <button type="button" class="current" id="current-location">Here</button>
+                    </div>
+                    <div class="col-2">
 
-                </div>
-        </form>
+                    </div>
+            </form>
 
+        </div>
     </div>
     </div>
 
@@ -80,7 +82,11 @@ Find how to use version control on vs code-->
                             </div>
                         </div>
                     </div>
+                    <ul>
 
+                        <li>Humidity: <span id="humidity"></span>%</li>
+                        <li>Wind: <span id="wind"></span> km/h</li>
+                    </ul>
                 </div>
             </div>
             <div class="col-7">
@@ -228,12 +234,12 @@ Find how to use version control on vs code-->
         function getForecast(coordinates) {
 
             let apiKey = "3980a7c8f2a782241a093131b099f993";
-            apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&unit=metric`;
+            apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
 
 
             axios.get(apiUrl).then(displayForecast);
 
-            console.log(apiUrl);
+
         }
 
 
@@ -251,7 +257,11 @@ Find how to use version control on vs code-->
             );
             document.querySelector("#temperature-description").innerHTML =
                 response.data.weather[0].description;
+            document.querySelector("#humidity").innerHTML =
+                response.data.main.humidity
 
+            document.querySelector("#wind").innerHTML =
+                Math.round(response.data.wind.speed);
 
             // Getting weather icon
             let iconElement = document.querySelector("#weather-icon");
@@ -280,6 +290,8 @@ Find how to use version control on vs code-->
             }
 
             getForecast(response.data.coord)
+
+
         }
 
         function searchCity(city) {
@@ -289,6 +301,7 @@ Find how to use version control on vs code-->
             let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
             axios.get(apiUrl).then(displayWeather);
+            console.log(apiUrl);
         }
 
 
