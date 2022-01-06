@@ -69,7 +69,7 @@ h4 {
 .low-container {
   background: #9f88bf;
   max-width: 100% !important;
-  padding-bottom: 7%;
+  padding-bottom: 3%;
   font-family: "Poppins", sans-serif;
 }
 
@@ -157,6 +157,14 @@ input {
 .headingAll {
   padding-left: 7%;
 }
+.credits a {
+  text-decoration: none;
+  color: darkslateblue;
+}
+
+.forecast-temperature-min {
+  color: darkslateblue !important;
+}
 
 ul {
   list-style-type: none;
@@ -173,6 +181,42 @@ ul {
 
 @media screen and (max-width: 1024px) {
   .heading {
-    font-size: 19px;
+    font-size: 25px;
+  }
+  .headingAll {
+    padding-left: 5px;
+  }
+
+  h1,
+  .date {
+    padding-left: 0px;
+  }
+  .current {
+    width: 80px;
+  }
+  #weatherButton {
+    width: 80px !important;
+  }
+
+  #temperature {
+    font-size: 46px !important;
+  }
+
+  #weather-icon {
+    display: none;
+  }
+  .forecast {
+    padding-left: 15px;
+  }
+
+  .units,
+  ul {
+    display: block;
+
+    top: 1px !important;
+  }
+
+  ul {
+    padding-top: 6px !important;
   }
 }
