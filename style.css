@@ -55,8 +55,8 @@ h4 {
 }
 
 .weekly {
-  padding-right: 15%;
-  padding-left: 15%;
+  padding-right: 19%;
+  padding-left: 19%;
   text-align: center;
   font-weight: 600;
 }
@@ -152,6 +152,7 @@ input {
 .forecast .units {
   position: relative;
   top: -25px;
+
   font-family: "Poppins", sans-serif;
 }
 .headingAll {
@@ -164,6 +165,9 @@ input {
 
 .forecast-temperature-min {
   color: darkslateblue !important;
+}
+.units a {
+  color: darkslateblue;
 }
 
 ul {
@@ -218,5 +222,10 @@ ul {
 
   ul {
     padding-top: 6px !important;
+  }
+
+  .weekly {
+    padding-right: 9%;
+    padding-left: 9%;
   }
 }

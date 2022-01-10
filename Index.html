@@ -112,6 +112,7 @@ Find how to use version control on vs code-->
 
         let now = new Date();
 
+
         function formatDate(mydate) {
             let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
             let day = days[mydate.getDay()]; //  returns a value between 0 and 6
@@ -207,11 +208,7 @@ Find how to use version control on vs code-->
             // Looping through days from daily forecast
             forecastDays.forEach(function (forecastDay, index) {
 
-                // let FahrenheitTempForecastMax = forecastDay.temp.max;
-                // let FahrenheitTempForecastMin = forecastDay.temp.min;
-                // let CelsiusTempForecastMax = (FahrenheitTempForecastMax - 32) * 5 / 9;
-                // let CelsiusTempForecastMin = (FahrenheitTempForecastMin - 32) * 5 / 9;
-                // Start HERE / at the moment the api temp response is a big number - how change it to normal? previous api was ok in that matter
+
 
                 if (index < 6) {
 
@@ -294,7 +291,14 @@ Find how to use version control on vs code-->
                 keyVisual.setAttribute("src", "src/undraw_Floating_re_xtcj.svg");
             }
 
-            getForecast(response.data.coord)
+            celsius.classList.add("active");
+            fahrenheit.classList.remove("active");
+
+
+
+            getForecast(response.data.coord);
+
+
 
 
         }
